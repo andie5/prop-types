@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.fromLabel {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.toLabel {
+  margin-left: 120px;
+  margin-top: 120px;
+  background-color: orange;
+}
+
+.envelope {
+  position: relative;
+  border: 1px solid #ccc;
+  width: 700px;
+  height: 350px;
+}
