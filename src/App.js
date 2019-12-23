@@ -33,10 +33,10 @@ const CreditCard = ({ cardInfo, className }) => {
 };
 
 const cardInfo = {
-  name: "Mr Sender",
+  name: "CARDHOLDER NAME",
   expirationDate: "10/12",
   creditCardNo: "1234 5678 9123 4567",
-  bankName: "Bank Name"
+  bankName: "Big Bank, Inc"
 };
 
 function App() {
