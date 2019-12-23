@@ -29,3 +29,10 @@ code {
   width: 700px;
   height: 350px;
 }
+
+.poster {
+  background-color: black;
+  border: 1px solid #ccc;
+  width: 700px;
+  height: 350px;
+}

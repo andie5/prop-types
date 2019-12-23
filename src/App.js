@@ -2,63 +2,49 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-const AddressLabel = ({ person }) => {
-  const { name, addressLine1, addressLine2 } = person;
-
-  return (
-    <>
-      <div>{name}</div>
-      <div>{addressLine1}</div>
-      <div>{addressLine2}</div>
-    </>
-  );
-};
-
-const fromAddress = {
-  name: "Mr Sender",
-  addressLine1: "123 Fake St. Boston, ",
-  addressLine2: "MA 02118"
-};
-
-const toAddress = {
-  name: "Mr Receiver",
-  addressLine1: "123 Fake St. Boston, ",
-  addressLine2: "CA 12345"
-};
-
 function App() {
-  return <Envelope toPerson={toAddress} fromPerson={fromAddress} />;
+  return (
+    <Poster
+      image={"https://rawgit.com/gorangajic/react-icons/master/react-icons.svg"}
+      title={"REACT"}
+      text={"The best thing since jQuery, probably"}
+    />
+  );
 }
 
-function Envelope({ toPerson, fromPerson }) {
+function Poster({ image, title, text }) {
+  console.log("image: ", image);
+  console.log("image var: ", `${image}`);
   return (
-    <div className={"envelope"}>
-      <AddressLabel className="fromLabel" person={fromPerson} />
-      <AddressLabel className="toLabel" person={toPerson} />
-      <Stamp />
+    <div className={"poster"}>
+      <div>
+        <img
+          src={image}
+          alt={"react-img"}
+          style={{ width: "200px", alignSelf: "center", paddingLeft: "249px" }}
+        />
+      </div>
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: "serif",
+          fontSize: "2.5em",
+          color: "blue"
+        }}
+      >
+        {title}
+      </div>
+      <div style={{ textAlign: "center", color: "#fff", fontSize: "1.5em" }}>
+        {text}
+      </div>
     </div>
   );
 }
 
-Envelope.propTypes = {
-  toPerson: PropTypes.object.isRequired,
-  fromPerson: PropTypes.object.isRequired
-};
-
-function Stamp() {
-  return (
-    <div className="stamp">
-      <span className="text">Stamp</span>
-    </div>
-  );
-}
-
-AddressLabel.propTypes = {
-  personAddress: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    addressLine1: PropTypes.string.isRequired,
-    addressLine2: PropTypes.string.isRequired
-  })
+Poster.propTypes = {
+  image: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default App;
