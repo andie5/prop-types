@@ -2,62 +2,53 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-const AddressLabel = ({ person }) => {
-  const { name, addressLine1, addressLine2 } = person;
+const CreditCard = ({ cardInfo, className }) => {
+  const { name, expirationDate, creditCardNo, bankName } = cardInfo;
 
   return (
-    <>
-      <div>{name}</div>
-      <div>{addressLine1}</div>
-      <div>{addressLine2}</div>
-    </>
+    <div className="bankDetails">
+      <h1 style={{ textAlign: "right", color: "#fff", fontWeight: "900" }}>
+        {bankName}
+      </h1>
+      <div
+        style={{
+          textAlign: "left",
+          color: "#fff",
+          fontWeight: "900",
+          fontSize: "1.25em"
+        }}
+      >
+        {creditCardNo}
+      </div>
+
+      <div style={{ textAlign: "left", color: "#fff", fontWeight: "900" }}>
+        Valid Through {expirationDate}
+      </div>
+      <br />
+      <div style={{ textAlign: "left", color: "#fff", fontWeight: "900" }}>
+        {name}
+      </div>
+    </div>
   );
 };
 
-const fromAddress = {
+const cardInfo = {
   name: "Mr Sender",
-  addressLine1: "123 Fake St. Boston, ",
-  addressLine2: "MA 02118"
-};
-
-const toAddress = {
-  name: "Mr Receiver",
-  addressLine1: "123 Fake St. Boston, ",
-  addressLine2: "CA 12345"
+  expirationDate: "10/12",
+  creditCardNo: "1234 5678 9123 4567",
+  bankName: "Bank Name"
 };
 
 function App() {
-  return <Envelope toPerson={toAddress} fromPerson={fromAddress} />;
+  return <CreditCard cardInfo={cardInfo} />;
 }
 
-function Envelope({ toPerson, fromPerson }) {
-  return (
-    <div className={"envelope"}>
-      <AddressLabel className="fromLabel" person={fromPerson} />
-      <AddressLabel className="toLabel" person={toPerson} />
-      <Stamp />
-    </div>
-  );
-}
-
-Envelope.propTypes = {
-  toPerson: PropTypes.object.isRequired,
-  fromPerson: PropTypes.object.isRequired
-};
-
-function Stamp() {
-  return (
-    <div className="stamp">
-      <span className="text">Stamp</span>
-    </div>
-  );
-}
-
-AddressLabel.propTypes = {
-  personAddress: PropTypes.shape({
+CreditCard.propTypes = {
+  cardInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    addressLine1: PropTypes.string.isRequired,
-    addressLine2: PropTypes.string.isRequired
+    expirationDate: PropTypes.string.isRequired,
+    creditCardNo: PropTypes.string.isRequired,
+    bankName: PropTypes.string.isRequired
   })
 };
 
